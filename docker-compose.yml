@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres
+    container_name: bank-simulation-app
+    environment:
+      POSTGRES_USER: gsig
+      POSTGRES_PASSWORD: br@123
+      POSTGRES_DB: bankappsimu
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

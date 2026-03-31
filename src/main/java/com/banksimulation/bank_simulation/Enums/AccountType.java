@@ -1,7 +1,9 @@
 package com.banksimulation.bank_simulation.Enums;
 
+import com.banksimulation.bank_simulation.Exceptions.InvalidAccountTypeException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.springframework.http.ResponseEntity;
 
 @AllArgsConstructor
 @Getter
@@ -18,6 +20,6 @@ public enum AccountType {
         for (AccountType type : values()) {
             if (type.code == code) return type;
         }
-        throw new IllegalArgumentException("Invalid account type code: " + code);
+        throw new InvalidAccountTypeException();
     }
 }

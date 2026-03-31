@@ -8,7 +8,5 @@ import java.util.UUID;
 @Repository
 public interface PersonalAccountRepository extends JpaRepository<PersonalAccount, UUID> {
 
-    boolean findByCPF(String cpf);
-    boolean findByEmail(String email);
-
+    boolean existsBy(String cpf);
 }

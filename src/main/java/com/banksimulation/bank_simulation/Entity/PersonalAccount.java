@@ -18,11 +18,9 @@ import java.util.UUID;
 public class PersonalAccount {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
-
-    @Column(nullable = false, unique = true, length = 10)
-    private String accountNumber;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "account_seq")
+    @SequenceGenerator(name = "account_seq", sequenceName = "account_sequence", initialValue = 0, allocationSize = 1)
+    private Long id;
 
     @Column(nullable = false, unique = true, length = 11)
     private String cpf;
@@ -64,7 +62,6 @@ public class PersonalAccount {
         this.updatedAt = LocalDateTime.now();
         this.balance = BigDecimal.ZERO;
         this.status = AccountStatus.ACTIVE;
-        this.accountNumber = generateAccountNumber();
     }
 
     @PreUpdate

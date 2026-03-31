@@ -4,9 +4,8 @@ import com.banksimulation.bank_simulation.DTO.PersonalAccountMapper;
 import com.banksimulation.bank_simulation.DTO.PersonalAccountRequestDTO;
 import com.banksimulation.bank_simulation.DTO.PersonalAccountResponseDTO;
 import com.banksimulation.bank_simulation.Entity.PersonalAccount;
-import com.banksimulation.bank_simulation.Exceptions.AccountTypeException;
+import com.banksimulation.bank_simulation.Exceptions.AccountTypeMandatoryException;
 import com.banksimulation.bank_simulation.Exceptions.CpfExistenteException;
-import com.banksimulation.bank_simulation.Exceptions.EmailExistenteException;
 import com.banksimulation.bank_simulation.Repository.PersonalAccountRepository;
 import com.banksimulation.bank_simulation.service.PersonalAccountService;
 import lombok.RequiredArgsConstructor;
@@ -22,23 +21,19 @@ public class PersonalAccountServiceImpl implements PersonalAccountService {
     @Override
     public PersonalAccountResponseDTO openAccount(PersonalAccountRequestDTO DTO){
         PersonalAccount account = mapper.toEntity(DTO);
-        validateAccount(account);
-        PersonalAccount saved = personalAccountRepository.save(account);
-        return mapper.toResponse(saved);
+            validateAccount(account);
+            PersonalAccount saved = personalAccountRepository.save(account);
+            return mapper.toResponse(saved);
     }
 
     private void validateAccount(PersonalAccount account){
-        if(personalAccountRepository.findByCPF(account.getCpf())){
+        if(personalAccountRepository.existsBy(account.getCpf())){
             throw new CpfExistenteException();
         }
-
-        if(personalAccountRepository.findByEmail(account.getEmail())){
-            throw new EmailExistenteException();
-        }
-
         if(account.getAccountType() == null){
-            throw new AccountTypeException();
+            throw new AccountTypeMandatoryException();
         }
+
     }
 
 }

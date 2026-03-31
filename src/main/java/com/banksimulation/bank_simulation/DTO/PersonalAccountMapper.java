@@ -20,8 +20,6 @@ public class PersonalAccountMapper {
 
     public PersonalAccountResponseDTO toResponse(PersonalAccount account) {
         return new PersonalAccountResponseDTO(
-                account.getId(),
-                account.getAccountNumber(),
                 account.getFullName(),
                 account.getCpf(),
                 account.getEmail(),

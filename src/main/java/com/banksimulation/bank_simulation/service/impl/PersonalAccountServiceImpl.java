@@ -6,10 +6,14 @@ import com.banksimulation.bank_simulation.DTO.PersonalAccountResponseDTO;
 import com.banksimulation.bank_simulation.Entity.PersonalAccount;
 import com.banksimulation.bank_simulation.Exceptions.AccountTypeMandatoryException;
 import com.banksimulation.bank_simulation.Exceptions.CpfExistenteException;
+import com.banksimulation.bank_simulation.Exceptions.NoAccountFoundException;
 import com.banksimulation.bank_simulation.Repository.PersonalAccountRepository;
 import com.banksimulation.bank_simulation.service.PersonalAccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -17,6 +21,7 @@ public class PersonalAccountServiceImpl implements PersonalAccountService {
 
     private final PersonalAccountRepository personalAccountRepository;
     private final PersonalAccountMapper mapper;
+
 
     @Override
     public PersonalAccountResponseDTO openAccount(PersonalAccountRequestDTO DTO){
@@ -35,5 +40,20 @@ public class PersonalAccountServiceImpl implements PersonalAccountService {
         }
 
     }
+
+    @Override
+    public List<PersonalAccountResponseDTO> listAccounts() {
+        List<PersonalAccount> accounts = personalAccountRepository.findAll();
+        List<PersonalAccountResponseDTO> response = new ArrayList<>();
+
+        if(accounts.isEmpty()){
+            throw new NoAccountFoundException();
+        }
+            for (PersonalAccount account : accounts) {
+                response.add(mapper.toResponse(account));
+            }
+            return response;
+        }
+
 
 }

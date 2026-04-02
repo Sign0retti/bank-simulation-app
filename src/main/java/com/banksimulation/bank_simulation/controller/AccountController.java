@@ -6,7 +6,6 @@ import com.banksimulation.bank_simulation.DTO.PersonalAccountResponseDTO;
 import com.banksimulation.bank_simulation.service.PersonalAccountService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,5 +30,11 @@ public class AccountController {
     public ResponseEntity<PersonalAccountResponseDTO> openAccount(@RequestBody @Valid PersonalAccountRequestDTO dto) {
         PersonalAccountResponseDTO response = personalAccountService.openAccount(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteAccount(@PathVariable Long id) {
+        personalAccountService.deleteAccount(id);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

@@ -1,9 +1,6 @@
 package com.banksimulation.bank_simulation.Handler;
 
-import com.banksimulation.bank_simulation.Exceptions.CpfExistenteException;
-import com.banksimulation.bank_simulation.Exceptions.EmailExistenteException;
-import com.banksimulation.bank_simulation.Exceptions.InvalidAccountTypeException;
-import com.banksimulation.bank_simulation.Exceptions.NoAccountFoundException;
+import com.banksimulation.bank_simulation.Exceptions.*;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +30,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
         @ExceptionHandler(NoAccountFoundException.class)
         public ResponseEntity<String> handleNoAccountFound(NoAccountFoundException ex) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+        }
+
+        @ExceptionHandler(AccountHasBalanceException.class)
+        public ResponseEntity<String> handleAccountHasBalance(AccountHasBalanceException ex) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
         }
 
     }

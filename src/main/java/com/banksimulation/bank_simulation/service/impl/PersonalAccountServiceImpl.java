@@ -76,4 +76,12 @@ public class PersonalAccountServiceImpl implements PersonalAccountService {
 
     }
 
+
+    @Override
+    public PersonalAccountResponseDTO accountByID(Long id){
+        PersonalAccount account = personalAccountRepository.findById(id)
+                .orElseThrow(NoAccountFoundException::new);
+        return mapper.toResponse(account);
+    }
+
 }

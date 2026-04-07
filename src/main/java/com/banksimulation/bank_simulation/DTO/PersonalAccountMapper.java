@@ -20,6 +20,7 @@ public class PersonalAccountMapper {
 
     public PersonalAccountResponseDTO toResponse(PersonalAccount account) {
         return new PersonalAccountResponseDTO(
+                account.getId(),
                 account.getFullName(),
                 account.getCpf(),
                 account.getEmail(),
@@ -27,6 +28,7 @@ public class PersonalAccountMapper {
                 account.getBalance(),
                 account.getOverdraftLimit(),
                 account.getAccountType().getDisplayName(),
+                account.getStatus().getDisplayName(),
                 account.getCreatedAt()
         );
     }

@@ -1,7 +1,9 @@
 package com.banksimulation.bank_simulation.Enums;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
+@Getter
 @AllArgsConstructor
 public enum AccountStatus {
 

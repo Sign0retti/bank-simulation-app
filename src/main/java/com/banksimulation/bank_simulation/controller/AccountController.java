@@ -5,6 +5,7 @@ import com.banksimulation.bank_simulation.DTO.PersonalAccountRequestDTO;
 import com.banksimulation.bank_simulation.DTO.PersonalAccountResponseDTO;
 import com.banksimulation.bank_simulation.service.PersonalAccountService;
 import jakarta.validation.Valid;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/accounts")
+@RequestMapping("/v1/accounts")
 @RequiredArgsConstructor
 public class AccountController {
 
@@ -36,5 +37,11 @@ public class AccountController {
     public ResponseEntity<Void> deleteAccount(@PathVariable Long id) {
         personalAccountService.deleteAccount(id);
         return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<PersonalAccountResponseDTO> listByID(@PathVariable Long id){
+        PersonalAccountResponseDTO response = personalAccountService.accountByID(id);
+        return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 }

@@ -6,13 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="e3c1204d-8c9b-4c15-a5c0-0a00ca1faaad" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/banksimulation/bank_simulation/DTO/PersonalAccountMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banksimulation/bank_simulation/DTO/PersonalAccountMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/banksimulation/bank_simulation/DTO/PersonalAccountResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banksimulation/bank_simulation/DTO/PersonalAccountResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/banksimulation/bank_simulation/Entity/PersonalAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banksimulation/bank_simulation/Entity/PersonalAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/banksimulation/bank_simulation/Enums/AccountStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banksimulation/bank_simulation/Enums/AccountStatus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banksimulation/bank_simulation/DTO/PersonalAccountMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banksimulation/bank_simulation/DTO/AccountMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banksimulation/bank_simulation/DTO/PersonalAccountRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banksimulation/bank_simulation/DTO/AccountRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banksimulation/bank_simulation/DTO/PersonalAccountResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banksimulation/bank_simulation/DTO/AccountResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banksimulation/bank_simulation/Repository/PersonalAccountRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banksimulation/bank_simulation/Repository/AccountRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/banksimulation/bank_simulation/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banksimulation/bank_simulation/controller/AccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/banksimulation/bank_simulation/service/PersonalAccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banksimulation/bank_simulation/service/PersonalAccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/banksimulation/bank_simulation/service/impl/PersonalAccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banksimulation/bank_simulation/service/impl/PersonalAccountServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banksimulation/bank_simulation/service/PersonalAccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banksimulation/bank_simulation/service/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/banksimulation/bank_simulation/service/impl/PersonalAccountServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/banksimulation/bank_simulation/service/impl/AccountServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +44,9 @@
     &quot;accountId&quot;: &quot;04d3d1ea-b938-4e44-b2d6-ea4bab9fe1ac&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$MAVEN_REPOSITORY$/org/postgresql/postgresql/42.7.10/postgresql-42.7.10.jar!/org/postgresql/core/v3/ConnectionFactoryImpl.class" root0="SKIP_INSPECTION" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -72,7 +75,8 @@
     "last_opened_file_path": "C:/Users/gabri/Dev/bank-simulation",
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
   <component name="RunManager">

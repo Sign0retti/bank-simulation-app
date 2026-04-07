@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import java.math.BigDecimal;
 
-public record PersonalAccountRequestDTO(
+public record AccountRequestDTO(
 
         @NotBlank(message = "Nome completo é obrigatório")
         String fullName,

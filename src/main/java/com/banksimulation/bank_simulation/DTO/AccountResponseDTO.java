@@ -3,7 +3,7 @@ package com.banksimulation.bank_simulation.DTO;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public record PersonalAccountResponseDTO(
+public record AccountResponseDTO(
         Long id,
         String fullName,
         String cpf,

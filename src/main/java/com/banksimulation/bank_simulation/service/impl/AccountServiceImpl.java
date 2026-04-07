@@ -1,16 +1,16 @@
 package com.banksimulation.bank_simulation.service.impl;
 
-import com.banksimulation.bank_simulation.DTO.PersonalAccountMapper;
-import com.banksimulation.bank_simulation.DTO.PersonalAccountRequestDTO;
-import com.banksimulation.bank_simulation.DTO.PersonalAccountResponseDTO;
+import com.banksimulation.bank_simulation.DTO.AccountMapper;
+import com.banksimulation.bank_simulation.DTO.AccountRequestDTO;
+import com.banksimulation.bank_simulation.DTO.AccountResponseDTO;
 import com.banksimulation.bank_simulation.Entity.PersonalAccount;
 import com.banksimulation.bank_simulation.Enums.AccountStatus;
 import com.banksimulation.bank_simulation.Exceptions.AccountHasBalanceException;
 import com.banksimulation.bank_simulation.Exceptions.AccountTypeMandatoryException;
 import com.banksimulation.bank_simulation.Exceptions.CpfExistenteException;
 import com.banksimulation.bank_simulation.Exceptions.NoAccountFoundException;
-import com.banksimulation.bank_simulation.Repository.PersonalAccountRepository;
-import com.banksimulation.bank_simulation.service.PersonalAccountService;
+import com.banksimulation.bank_simulation.Repository.AccountRepository;
+import com.banksimulation.bank_simulation.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,13 +21,13 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Service
-public class PersonalAccountServiceImpl implements PersonalAccountService {
+public class AccountServiceImpl implements AccountService {
 
-    private final PersonalAccountRepository personalAccountRepository;
-    private final PersonalAccountMapper mapper;
+    private final AccountRepository personalAccountRepository;
+    private final AccountMapper mapper;
 
     @Override
-    public PersonalAccountResponseDTO openAccount(PersonalAccountRequestDTO DTO){
+    public AccountResponseDTO openAccount(AccountRequestDTO DTO){
         PersonalAccount account = mapper.toEntity(DTO);
             validateAccount(account);
             PersonalAccount saved = personalAccountRepository.save(account);
@@ -45,9 +45,9 @@ public class PersonalAccountServiceImpl implements PersonalAccountService {
     }
 
     @Override
-    public List<PersonalAccountResponseDTO> listAccounts() {
+    public List<AccountResponseDTO> listAccounts() {
         List<PersonalAccount> accounts = personalAccountRepository.findAll();
-        List<PersonalAccountResponseDTO> response = new ArrayList<>();
+        List<AccountResponseDTO> response = new ArrayList<>();
 
         if(accounts.isEmpty()){
             throw new NoAccountFoundException();
@@ -78,7 +78,7 @@ public class PersonalAccountServiceImpl implements PersonalAccountService {
 
 
     @Override
-    public PersonalAccountResponseDTO accountByID(Long id){
+    public AccountResponseDTO accountByID(Long id){
         PersonalAccount account = personalAccountRepository.findById(id)
                 .orElseThrow(NoAccountFoundException::new);
         return mapper.toResponse(account);

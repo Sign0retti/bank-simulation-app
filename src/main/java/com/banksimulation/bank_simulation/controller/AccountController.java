@@ -1,11 +1,10 @@
 package com.banksimulation.bank_simulation.controller;
 
 
-import com.banksimulation.bank_simulation.DTO.PersonalAccountRequestDTO;
-import com.banksimulation.bank_simulation.DTO.PersonalAccountResponseDTO;
-import com.banksimulation.bank_simulation.service.PersonalAccountService;
+import com.banksimulation.bank_simulation.DTO.AccountRequestDTO;
+import com.banksimulation.bank_simulation.DTO.AccountResponseDTO;
+import com.banksimulation.bank_simulation.service.AccountService;
 import jakarta.validation.Valid;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,18 +17,18 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AccountController {
 
-    private final PersonalAccountService personalAccountService;
+    private final AccountService personalAccountService;
 
 
-    @GetMapping()
-    public ResponseEntity<List<PersonalAccountResponseDTO>> listAccounts() {
-        List<PersonalAccountResponseDTO> response = personalAccountService.listAccounts();
+    @GetMapping
+    public ResponseEntity<List<AccountResponseDTO>> listAccounts() {
+        List<AccountResponseDTO> response = personalAccountService.listAccounts();
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
-    @PostMapping("/newaccount")
-    public ResponseEntity<PersonalAccountResponseDTO> openAccount(@RequestBody @Valid PersonalAccountRequestDTO dto) {
-        PersonalAccountResponseDTO response = personalAccountService.openAccount(dto);
+    @PostMapping
+    public ResponseEntity<AccountResponseDTO> openAccount(@RequestBody @Valid AccountRequestDTO dto) {
+        AccountResponseDTO response = personalAccountService.openAccount(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
@@ -40,8 +39,8 @@ public class AccountController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<PersonalAccountResponseDTO> listByID(@PathVariable Long id){
-        PersonalAccountResponseDTO response = personalAccountService.accountByID(id);
+    public ResponseEntity<AccountResponseDTO> listByID(@PathVariable Long id){
+        AccountResponseDTO response = personalAccountService.accountByID(id);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 }

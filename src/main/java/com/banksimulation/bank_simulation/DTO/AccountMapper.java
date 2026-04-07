@@ -5,9 +5,9 @@ import com.banksimulation.bank_simulation.Enums.AccountType;
 import org.springframework.stereotype.Component;
 
 @Component
-public class PersonalAccountMapper {
+public class AccountMapper {
 
-    public PersonalAccount toEntity(PersonalAccountRequestDTO dto) {
+    public PersonalAccount toEntity(AccountRequestDTO dto) {
         PersonalAccount account = new PersonalAccount();
         account.setFullName(dto.fullName());
         account.setCpf(dto.cpf());
@@ -18,8 +18,8 @@ public class PersonalAccountMapper {
         return account;
     }
 
-    public PersonalAccountResponseDTO toResponse(PersonalAccount account) {
-        return new PersonalAccountResponseDTO(
+    public AccountResponseDTO toResponse(PersonalAccount account) {
+        return new AccountResponseDTO(
                 account.getId(),
                 account.getFullName(),
                 account.getCpf(),
